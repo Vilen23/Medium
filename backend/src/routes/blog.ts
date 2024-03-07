@@ -3,6 +3,7 @@ import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { hashpass , checkpass} from '../passwordhashing/hash';
 import { decode, sign, verify } from 'hono/jwt'
+import { createBlogInput, updateBlogInput } from '@vilen23/medium-zod';
 
 export const blogRouter = new Hono<{
     Bindings: {
@@ -17,13 +18,13 @@ export const blogRouter = new Hono<{
 
 blogRouter.use('/*', async (c, next) => {
   //get the header and verify it
-
-  const authHeader =  c.req.header("authorization") || "";
   try {
-    const user = await verify(authHeader,c.env.JWT_SECRET); 
-  if(user){
-    c.set("userId",user.id);
-    await next();
+    const authHeader =  c.req.header("authorization") || "";
+    const user = await verify(authHeader,c.env.JWT_SECRET);
+    if(user){
+      c.set("userId",user.id);
+      await next();
+      console.log(user); 
   }
   } catch (error) {
     c.status(403);
@@ -34,14 +35,21 @@ blogRouter.use('/*', async (c, next) => {
   
   
 blogRouter.post('/',async (c)=>{
+  console.log("he")
   const userId = c.get("userId");
   const prisma = new PrismaClient({
     datasourceUrl: c.env?.DATABASE_URL,
   }).$extends(withAccelerate());
   
-  console.log("aya hu idr");
   try {
     const body = await c.req.json();
+    const {success} = createBlogInput.safeParse(body);
+    if(!success){
+      c.status(411);
+      return c.json({
+        message:"Wrong format to create a blog post"
+      })
+    }
     const blog = await prisma.post.create({
       data:{
         title:body.title,
@@ -63,8 +71,15 @@ blogRouter.put('/',async (c)=>{
     datasourceUrl: c.env?.DATABASE_URL,
   }).$extends(withAccelerate());
 
-  const body = await c.req.json();
   try {
+    const body = await c.req.json();
+    const {success} = updateBlogInput.safeParse(body);
+    if(!success){
+      c.status(411);
+      return c.json({
+        message:"Wrong inputs to update the blog post"
+      })
+    }
     const blog = await prisma.post.update({
       where:{
         id:body.id
