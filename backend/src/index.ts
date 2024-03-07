@@ -7,13 +7,21 @@ import { decode, sign, verify } from 'hono/jwt'
 const app = new Hono<{
 	Bindings: {
 		DATABASE_URL: string,
-    JWT_SECRET: string
+    JWT_SECRET: string,
 	}
 }>();
 
 app.use('/api/v1/blog/*', async (c, next) => {
   //get the header and verify it
-  await next()
+
+  const header = c.req.header("authorization");
+  const response  = await verify(header as string, c.env.JWT_SECRET);
+  if(response.id){
+    next();
+  }else{
+    c.status(403);
+    return c.json({message:"Unauthorized"})
+  } 
 })
 
 app.post('/api/v1/user/signup',async (c)=>{
