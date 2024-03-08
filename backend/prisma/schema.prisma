@@ -23,9 +23,12 @@ model User {
 
 model Post{
   id        String  @id @default(uuid())
+  imagelink String  @default("")
   title     String
   content   String
   published Boolean @default(false)
   authorId  String
+  authorName String @default("")
+  createdAt DateTime @default(now())
   author    User    @relation(fields: [authorId],references: [id])
 }
