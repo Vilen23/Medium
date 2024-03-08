@@ -6,25 +6,30 @@ import { ChangeEvent, useState } from "react";
 import { SignupInput } from "@vilen23/medium-zod";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
+import { useSetRecoilState } from "recoil";
+import { userAtom } from "@/State/Post/user/user";
 
 export function Auth({type}:{type:"signup" | "signin"}){
     const navigate = useNavigate();
+    const setUser = useSetRecoilState(userAtom);
     const [loader,setLoader] = useState(false);
     const [postInput,setpostInput] = useState<SignupInput>({
         name:"",
         email:"",
         password:""
     })
-    console.log(postInput);
     
+
     async function HandleSignup(){
         setLoader(true);
         try {
             const response = await axios.post(`${BACKEND_URL}/api/v1/user/signup`,postInput);
+            console.log(response)
             const jwt = response.data.token;
             localStorage.setItem("token",jwt);
+            setUser(response.data.user);
             setLoader(false);
-            navigate("/blogs")
+            navigate("/signin")
         } catch (error) {
             console.log(error);
             setLoader(false);
@@ -34,8 +39,10 @@ export function Auth({type}:{type:"signup" | "signin"}){
         setLoader(true);
         try {
             const response = await axios.post(`${BACKEND_URL}/api/v1/user/signin`,postInput);
+            console.log(response)
             const jwt = response.data.token;
             localStorage.setItem("token",jwt);
+            setUser(response.data.user);
             setLoader(false);
             navigate("/blogs")
         } catch (error) {

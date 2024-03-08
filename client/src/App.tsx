@@ -5,6 +5,7 @@ import { Blog } from "./pages/Blog"
 import { Navbar } from "./components/Navbar"
 import { Home } from "./pages/Home"
 import { Blogs } from "./pages/Blogs"
+import { CreateBlog } from "./pages/CreateBlog"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/blog/:id" element={<Blog/>}/>
         <Route path="/blogs" element={<Blogs/>}/>
+        <Route path="/write" element={<CreateBlog/>}/>
       </Routes>
 
     </div>
