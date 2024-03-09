@@ -35,6 +35,27 @@ blogRouter.get('/bulk',async (c)=>{
     })
   }
 })
+blogRouter.get('/:id',async (c)=>{
+  const prisma = new PrismaClient({
+    datasourceUrl: c.env?.DATABASE_URL,
+  }).$extends(withAccelerate());
+
+  try {
+    const id =  c.req.param("id");
+    const blog = await prisma.post.findFirst({
+      where:{
+        id
+      }
+    })
+    c.status(200);
+    return c.json({blog})
+  } catch (error) {
+    c.status(403);
+    return c.json({
+      message:"Error while fetching blog"
+    })
+  }
+})
 
 blogRouter.use('/*', async (c, next) => {
   //get the header and verify it
@@ -135,25 +156,5 @@ blogRouter.put('/',async (c)=>{
 
 
 
-blogRouter.get('/:id',async (c)=>{
-  const prisma = new PrismaClient({
-    datasourceUrl: c.env?.DATABASE_URL,
-  }).$extends(withAccelerate());
 
-  try {
-    const id =  c.req.param("id");
-    const blog = await prisma.post.findFirst({
-      where:{
-        id
-      }
-    })
-    c.status(200);
-    return c.json({blog})
-  } catch (error) {
-    c.status(403);
-    return c.json({
-      message:"Error while fetching blog"
-    })
-  }
-})
   

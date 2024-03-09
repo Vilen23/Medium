@@ -6,9 +6,23 @@ import { Navbar } from "./components/Navbar"
 import { Home } from "./pages/Home"
 import { Blogs } from "./pages/Blogs"
 import { CreateBlog } from "./pages/CreateBlog"
+import { useEffect } from "react"
+import { useSetRecoilState } from "recoil"
+import { userAtom } from "./State/Post/user/user"
 
 function App() {
-
+  const setuser = useSetRecoilState(userAtom);
+useEffect(()=>{
+  const token = localStorage.getItem("token");
+  if(!token){
+    localStorage.setItem("recoil-persist","");
+    setuser({
+      id:"",
+      name:"",
+      email:""
+    })
+  }
+},[])
   return (
     <div className="font-roboto">
       <Navbar/>

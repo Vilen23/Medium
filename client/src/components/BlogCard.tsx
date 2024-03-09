@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { Badge } from "@/components/ui/badge";
 
-interface BlogCardProps {
+export interface BlogCardProps {
   authorName: string;
   title: string;
   content: string;
@@ -54,7 +54,7 @@ export function BlogCard(prop: BlogCardProps) {
         <img
           src={prop.imagelink}
           alt="blog"
-          className="cursor-pointer w-[250px] border-black border-2 h-[150px] object-cover rounded-md transform transition-all duration-500 hover:scale-90 shadow-lg"
+          className="cursor-pointer w-[250px] border-black border-2 h-[150px] object-cover rounded-md transform transition-all duration-500 hover:scale-90 shadow-lg "
           onClick={() => {
             navigate(`/blog/:${prop.id}`);
           }}

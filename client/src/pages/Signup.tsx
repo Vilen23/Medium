@@ -1,8 +1,12 @@
 import { Auth } from "@/components/Auth";
 import { Quote } from "@/components/Quote";
+import { BACKEND_URL } from "@/config";
+import axios from "axios";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Signup(){
+  const navigate = useNavigate();
     useEffect(() => {
         // Disable scroll on mount
         document.body.style.overflow = 'hidden';
@@ -12,6 +16,22 @@ export function Signup(){
           document.body.style.overflow = 'unset';
         };
       }, []);
+      useEffect(()=>{
+        const token  = localStorage.getItem("token");
+        if(token){
+          const fetchinfo = async()=>{
+            const res = await axios.get(`${BACKEND_URL}/api/v1/user/check`,{
+              headers:{
+                token
+              }
+            })
+            if(res.data.user){
+              navigate("/blogs");
+            }
+          }
+          fetchinfo();
+        }
+      },[])
     return (
         <>
         <div className="flex justify-center items-center h-screen">

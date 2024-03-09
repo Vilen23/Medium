@@ -1,6 +1,6 @@
 import { userAtom } from "@/State/Post/user/user";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { SignoutButton } from "./SignoutButton";
@@ -11,10 +11,12 @@ export function Navbar() {
     const navigate = useNavigate();
     const [user, setUser] = useRecoilState(userAtom);
     const [showSignOut, setShowSignOut] = useState(false);
-    const dropdownRef = useRef<HTMLDivElement>(null); // Add type assertion
+    const dropdownRef = useRef<HTMLDivElement>(null);
     const path = window.location.pathname;
     
-
+    const handleOurStoryClick = () => {
+      navigate('/#ourStory');
+    };
   return (
     <>
       <div className=" z-50 font-roboto h-[60px] w-full bg-white border-b-2 flex justify-between items-center sticky top-0 shadow-sm">
@@ -28,9 +30,9 @@ export function Navbar() {
         </div>
         <div className="mr-[60px] flex">
           <Button variant="link" className="text-black text-sm font-medium">
-            Our Story
+          <a onClick={handleOurStoryClick}>Our Story</a>
           </Button>
-          {!user.id && path!=="/signin" && (
+          {path!=="/signin" && !user.id   && (
             <Button
               onClick={() => {
                 navigate("/signin");
