@@ -47,6 +47,7 @@ export function CreateBlog() {
   }, []);
 
   console.log(postInput);
+  console.log(imageurl)
   const HandleContentChange = debounce((value: string) => {
     setpostInput((prev) => {
       return { ...prev, content: value };
@@ -105,6 +106,7 @@ export function CreateBlog() {
       },
       (error) => {
         setError("Size should be less than 2Mb");
+        console.log(error);
       },
       async () => {
         const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
