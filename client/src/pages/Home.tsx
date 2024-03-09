@@ -143,7 +143,7 @@ export function Home() {
           </div>
         </div>
         <div id="ourStory" className="my-[50px] w-full flex h-[500px] p-[40px]">
-          <div className="flex rounded-2xl bg-slate-200 items-center">
+          <div className="flex rounded-2xl  items-center">
             <div className="w-[45%] bg-black h-[200px] flex flex-col items-center rounded-full  ml-10 justify-center">
               <p className="text-white font-extrabold text-5xl ">
                 "Echoes in the Ether"
@@ -152,7 +152,7 @@ export function Home() {
                 A Blogging Platform for Shared Stories and Thoughts
               </p>
             </div>
-            <div className="h-full w-[55%] bg-slate-200 flex justify-center px-20 items-center">
+            <div className="h-full w-[55%]  flex justify-center px-20 items-center">
               <p className="font-bold text-justify text-[20px]">
                 "Echoes in the Ether" is more than a blogging platform; it's a
                 digital sanctuary where stories intertwine, and thoughts

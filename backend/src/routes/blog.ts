@@ -20,6 +20,7 @@ blogRouter.get('/bulk',async (c)=>{
   const prisma = new PrismaClient({
     datasourceUrl: c.env?.DATABASE_URL,
   }).$extends(withAccelerate());
+
   try {
     const blogs = await prisma.post.findMany({
       orderBy:{
