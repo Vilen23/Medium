@@ -4,8 +4,8 @@ import { Input } from "@/components/ui/input";
 import React, { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { useRecoilState } from "recoil";
-import { debounce, set } from "lodash";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { debounce } from "lodash";
 import { app } from "../State/Post/firebase";
 import {
   getDownloadURL,
@@ -30,7 +30,7 @@ export function CreateBlog() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [loadingcomplete, setloadingcomplete] = useState(false);
-  const [user, setUser] = useRecoilState(userAtom);
+  const user = useRecoilValue(userAtom);
 
   useEffect(() => {
     if (!user.id) {

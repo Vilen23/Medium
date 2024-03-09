@@ -1,6 +1,6 @@
 import { blogsAtom } from "@/State/Post/blog/blog";
 import { BlogCard } from "@/components/BlogCard";
-import { LoadingBlog, LoadingBlogCard } from "@/components/LoadingBLog";
+import {LoadingBlogCard } from "@/components/LoadingBLog";
 import { BACKEND_URL } from "@/config";
 import axios from "axios";
 import { useEffect, useState } from "react";

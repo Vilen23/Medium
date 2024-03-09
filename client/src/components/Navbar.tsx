@@ -1,15 +1,15 @@
 import { userAtom } from "@/State/Post/user/user";
 import { Button } from "@/components/ui/button";
 import {  useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import { SignoutButton } from "./SignoutButton";
 import { AlertWrite } from "./AlertWritePage";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 export function Navbar() {
     const navigate = useNavigate();
-    const [user, setUser] = useRecoilState(userAtom);
+    const user = useRecoilValue(userAtom);
     const [showSignOut, setShowSignOut] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
     const path = window.location.pathname;

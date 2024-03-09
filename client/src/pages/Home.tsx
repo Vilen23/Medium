@@ -2,7 +2,6 @@ import { userAtom } from "@/State/Post/user/user";
 import { BlogHomeCard } from "@/components/BlogHomeCard";
 import { LoadingBlog } from "@/components/LoadingBLog";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { BACKEND_URL } from "@/config";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
