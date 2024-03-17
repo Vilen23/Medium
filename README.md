@@ -39,14 +39,7 @@ We welcome contributions from the community! Here's how you can contribute:
 5. **Test your changes**: Ensure your changes do not break any existing functionality and that all tests pass.
 6. **Submit a pull request**: Push your changes to your fork and submit a pull request to the main repository for review.
 
-## License
-
-[Insert License Here] - This section should contain the license under which your project is made available. This could be MIT, GPL, Apache, etc.
-
 ## Contact
 
-For any queries or further assistance, please reach out to us at [email@email.com](mailto:email@email.com).
+For any queries or further assistance, please reach out to us at [shivamlather5@gmail.com](mailto:shivamlather5@gmail.com).
 
----
-
-Remember to replace placeholders (like the email address in the Contact section) with actual data relevant to your project.
