@@ -19,17 +19,17 @@ export function Navbar() {
     };
   return (
     <>
-      <div className=" z-50 font-roboto h-[60px] w-full bg-white border-b-2 flex justify-between items-center sticky top-0 shadow-sm">
+      <div className="z-50 font-roboto h-[60px] w-full bg-white border-b-2 flex justify-between items-center sticky top-0 shadow-sm">
         <div
-          className="ml-[50px] text-black text-[30px] font-semibold cursor-pointer"
+          className="md:ml-[50px] ml-[10px] text-black md:text-[30px] text-[20px] font-semibold cursor-pointer"
           onClick={() => {
             navigate("/");
           }}
         >
           <p className="cursor-pointer">Medium</p>
         </div>
-        <div className="mr-[60px] flex">
-          <Button variant="link" className="text-black text-sm font-medium">
+        <div className="md:mr-[60px] flex">
+          <Button variant="link" className="text-black hidden md:flex text-xs md:text-sm font-medium">
           <a onClick={handleOurStoryClick}>Our Story</a>
           </Button>
           {path!=="/signin" && !user.id   && (
@@ -38,7 +38,7 @@ export function Navbar() {
                 navigate("/signin");
               }}
               variant="link"
-              className="text-black text-sm font-medium"
+              className="text-black text-xs md:text-sm font-medium"
             >
               Signin
             </Button>
@@ -48,7 +48,7 @@ export function Navbar() {
               navigate("/write");
             }}
             variant="link"
-            className="text-black text-sm font-medium"
+            className="text-black text-xs md:text-sm font-medium"
           >
             Write
           </Button>}
@@ -58,19 +58,19 @@ export function Navbar() {
               navigate("/blogs");
             }}
             variant="link"
-            className="text-black text-sm font-medium"
+            className="text-black text-xs md:text-sm font-medium"
           >
             Blogs
           </Button>
           {!user.id && path!=="/signup" && (
-            <Button
+            <button
               onClick={() => {
                 navigate("/signup");
               }}
-              className="rounded-full hover:bg-white border-2 border-black  hover:text-black hover:border-black hover:border-2 hover:shadow-xl"
+              className="rounded-full px-2 bg-black text-white transition-all duration-600 md:font-semibold text-xs md:text-sm hover:bg-white border-2 py-0 border-black  hover:text-black hover:border-black hover:border-2 hover:shadow-xl hidden md:flex items-center"
             >
               Get Started
-            </Button>
+            </button>
           )}
           {user.id && (
         <div className="relative" ref={dropdownRef}>

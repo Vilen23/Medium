@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
     return (
       <AlertDialog>
         <AlertDialogTrigger asChild>
-          <Button className="rounded-full" variant="link">Write</Button>
+          <Button className="rounded-full text-xs md:text-sm" variant="link">Write</Button>
         </AlertDialogTrigger>
         <AlertDialogContent>
           <AlertDialogHeader>

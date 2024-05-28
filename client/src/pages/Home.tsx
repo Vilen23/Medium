@@ -73,12 +73,12 @@ export function Home() {
   return (
     <>
       <div className="w-full  flex items-center flex-col font-poppins justify-center pb-10" >
-        <div className="w-full flex flex-col items-center min-h-screen" ref={divRef} style={{opacity: opacity}}>
-        <div className=" mt-[200px] flex flex-col items-center justify-center min">
-          <p className="text-[40px] font-bold text-center ">
+        <div className="w-full flex flex-col items-center md:min-h-screen" ref={divRef} style={{opacity: opacity}}>
+        <div className="mt-[80px] px-1 md:px-0 md:mt-[200px] flex flex-col items-center justify-center min">
+          <p className="text-[30px]  md:text-[40px] font-bold text-center ">
             A Community Space for Shared Reflections and Thoughts
           </p>
-          <p className="text-xl w-[700px] text-center text-slate-600">
+          <p className="text-[14px] px-1 md:px-0 md:text-xl md:w-[700px] text-center text-slate-600">
             "Voices of the Valley" - Where your thoughts find their echo. A
             tapestry of insights woven from the voices of many, awaiting your
             unique thread.
@@ -86,7 +86,7 @@ export function Home() {
         </div>
         {!user.id ? (
           <div className="flex mt-[50px] gap-[10px] items-center">
-            <p className=" text-gray-600  text-[20px]">Sign up to Start writing</p>
+            <p className=" text-gray-600  md:text-[20px]">Sign up to Start writing</p>
             <Button className="rounded-md border-black border-2 hover:bg-white hover:text-black" onClick={() => {
                 navigate("/signup");
             }}>
@@ -101,8 +101,8 @@ export function Home() {
           </div>
         )}
         {!user.id && (
-          <div className="flex items-center mt-[4px] gap-1">
-            <p className="text-[12px] text-gray-700">
+          <div className="flex items-center flex-col mt-[4px] gap-1">
+            <p className="text-[12px] md:text-[12px] text-gray-700">
               Sign up to get notified when we launch.{" "}
             </p>
             <p className="text-[12px] text-gray-700 underline hover:text-black cursor-pointer">
@@ -112,14 +112,14 @@ export function Home() {
           </div>
         )}
         </div>
-        <div className="flex flex-col items-center min-h-screen">
-          <div className=" flex flex-col items-center gap-2">
-            <p className="font-bold text-5xl">Latest Posts</p>
-            <p className="text-gray-500 text-[16px]">
+        <div className="md:mt-0 mt-[50px] flex flex-col items-center min-h-screen">
+          <div className=" flex flex-col justify-center items-center gap-2">
+            <p className="font-bold text-3xl md:text-5xl">Latest Posts</p>
+            <p className="text-gray-500 text-center text-[16px] px-1 md:px-0">
               The most recent articles from our amazing contributors.
             </p>
           </div>
-          <div className="grid grid-cols-3 gap-10 my-10">
+          <div className="grid grid-cols-1 px-[2vw] md:px-0 md:grid-cols-3 gap-10 my-10">
             { loading? (
                 <div className="flex gap-20 w-screen justify-center">
                 <LoadingBlog />
@@ -141,18 +141,18 @@ export function Home() {
             })}
           </div>
         </div>
-        <div id="ourStory" className="my-[50px] w-full flex h-[500px] p-[40px]">
-          <div className="flex rounded-2xl  items-center">
-            <div className="w-[45%] bg-black h-[200px] flex flex-col items-center rounded-full  ml-10 justify-center">
-              <p className="text-white font-extrabold text-5xl ">
+        <div id="ourStory" className="my-[50px] w-full flex  md:h-[500px] md:p-[40px]">
+          <div className="flex flex-col md:flex-row rounded-2xl  items-center justify-center">
+            <div className="w-[90vw] md:w-[45%] bg-black md:h-[200px] flex flex-col items-center rounded-full  md:ml-10 justify-center py-4 md:py-0">
+              <p className="text-white font-extrabold text-3xl md:text-5xl ">
                 "Echoes in the Ether"
               </p>
-              <p className="text-white text-[20px] mt-2">
+              <p className="text-white text-[14px] px-2 md:text-[20px] md:mt-2">
                 A Blogging Platform for Shared Stories and Thoughts
               </p>
             </div>
-            <div className="h-full w-[55%]  flex justify-center px-20 items-center">
-              <p className="font-bold text-justify text-[20px]">
+            <div className="h-full mt-4 md:w-[55%]  flex justify-center md:px-20 px-[4vw] items-center">
+              <p className="md:font-bold text-center md:text-justify text-[16px] md:text-[20px]">
                 "Echoes in the Ether" is more than a blogging platform; it's a
                 digital sanctuary where stories intertwine, and thoughts
                 reverberate. Here, every post is a chapter, every comment a
