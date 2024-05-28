@@ -13,14 +13,14 @@ export function LoadingBlog() {
 }
 export function LoadingBlogCard() {
     return (
-        <div className="flex gap-10">
+        <div className="flex gap-10 flex-col md:flex-row">
         <div className="flex flex-col gap-5">
-        <Skeleton className="h-[30px] w-[160px] rounded-xl bg-gray-300" />
-        <Skeleton className="h-[80px] w-[500px] rounded-xl bg-gray-300" />
-        <Skeleton className="h-[48px] w-[500px] rounded-xl bg-gray-300" />
+        <Skeleton className="h-[30px] w-[80vw] md:w-[160px] rounded-xl bg-gray-300" />
+        <Skeleton className="h-[80px] w-[80vw] md:w-[500px] rounded-xl bg-gray-300" />
+        <Skeleton className="h-[48px] w-[80vw] md:w-[500px] rounded-xl bg-gray-300" />
         </div>
         <div className="space-y-2">
-            <Skeleton className="h-[150px] w-[250px] bg-gray-300" />
+            <Skeleton className="h-[150px] w-[80vw] md:w-[250px] bg-gray-300" />
         </div>
         </div>
     )

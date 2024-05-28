@@ -143,7 +143,7 @@ export function CreateBlog() {
 
   return (
     <div className="flex justify-center pt-[20px] font-roboto">
-      <div className="w-[600px] flex flex-col items-center">
+      <div className="md:w-[600px] w-[90vw] flex flex-col items-center">
         {error && (
           <div className="w-full mb-2">
             <Alert variant="destructive">

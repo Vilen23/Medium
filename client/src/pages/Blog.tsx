@@ -28,9 +28,9 @@ export function Blog() {
   return (
     loader ? <div className="w-full flex justify-center mt-[100px]">
         <LoadingBlog/>
-    </div>:<div className="flex flex-col items-center w-full font-roboto">
-    <div className="w-[600px] mt-10 flex flex-col mb-[30px]">
-      <h1 className="text-4xl font-extrabold mb-4">{blog.title}</h1>
+    </div>:<div className="flex flex-col items-center md:w-full font-roboto">
+    <div className="md:w-[600px] mt-10 flex flex-col mb-[30px] justify-center items-center">
+      <h1 className="text-4xl font-extrabold text-center mb-4">{blog.title}</h1>
       <div className="flex gap-4 items-center">
         <Avatar className="h-[50px] w-[50px]">
           <AvatarFallback className="font-bold text-xl">
@@ -45,10 +45,10 @@ export function Blog() {
         </div>
       </div>
     </div>
-    <img src={blog.imagelink} className="mt-5 w-[1400px] " />
-    <div className="w-[700px] mb-[500px] mt-20">
+    <img src={blog.imagelink} className="mt-5 w-[90vw] border-2 border-black md:w-[1400px] " />
+    <div className="md:w-[700px] md:mb-[500px] md:mt-20 w-[92vw]">
       <div
-        className="text-xl mt-5 font-poppins text-justify font-light"
+        className="md:text-xl  mt-5 font-poppins text-justify font-light"
         dangerouslySetInnerHTML={{ __html: blog.content }}
       ></div>
     </div>

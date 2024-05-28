@@ -121,7 +121,7 @@ export function Home() {
           </div>
           <div className="grid grid-cols-1 px-[2vw] md:px-0 md:grid-cols-3 gap-10 my-10">
             { loading? (
-                <div className="flex gap-20 w-screen justify-center">
+                <div className="flex md:flex-row flex-col items-center gap-20 w-screen justify-center">
                 <LoadingBlog />
                 <LoadingBlog />
                 <LoadingBlog />
